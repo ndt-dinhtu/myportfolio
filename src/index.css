@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-main-bg: white;
+  --color-main-text: #0f172a; 
+  
+  --color-dark-bg: #020617; 
+  --color-dark-text: #f8fafc; 
+}
+
+@layer base {
+  body {
+    @apply bg-[--color-main-bg] text-[--color-main-text] transition-colors duration-300;
+  }
+  .dark body {
+    @apply bg-[--color-dark-bg] text-[--color-dark-text];
+  }
+}
