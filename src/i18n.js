@@ -39,6 +39,16 @@ const resources = {
         reliability_desc:
           "Always maintaining commitments to quality and product security.",
       },
+      contact: {
+        title: "Contact Me",
+        subtitle: "Have a Project in Mind?",
+        desc: "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.",
+        phone: "Phone",
+        address: "Address",
+        form_name: "Full Name",
+        form_msg: "Message",
+        send: "Send Message",
+      },
     },
   },
   vi: {
@@ -77,6 +87,16 @@ const resources = {
         reliability: "Sự tin cậy",
         reliability_desc:
           "Luôn giữ vững cam kết về chất lượng và bảo mật sản phẩm.",
+      },
+      contact: {
+        title: "Liên Hệ Với Tôi",
+        subtitle: "Bạn có dự án trong đầu?",
+        desc: "Tôi luôn sẵn sàng thảo luận về các dự án mới, ý tưởng sáng tạo hoặc các cơ hội hợp tác.",
+        phone: "Điện thoại",
+        address: "Địa chỉ",
+        form_name: "Họ tên",
+        form_msg: "Lời nhắn",
+        send: "Gửi tin nhắn",
       },
     },
   },
