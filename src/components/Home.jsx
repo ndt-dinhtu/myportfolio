@@ -2,6 +2,7 @@ import TechStack from "./Home/TechStack";
 import Stats from "./Home/Stats";
 import Hero from "./Home/Hero";
 import SoftSkills from "./Home/SoftSkills";
+import DownloadCV from "./DownloadCV";
 
 const Home = () => {
   return (

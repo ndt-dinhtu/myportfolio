@@ -4,7 +4,8 @@ import { GitBranch, MessageCircleCheck, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import avatar from "../../assets/avatar.jpg";
-
+import cvUrl from "../../assets/cv.pdf";
+import { Download } from "lucide-react";
 const Hero = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
@@ -96,27 +97,54 @@ const Hero = () => {
 
         <motion.div
           variants={itemVariants}
-          className="pt-4 flex flex-wrap justify-center md:justify-start gap-4"
+          className="pt-6 flex flex-wrap items-center justify-center md:justify-start gap-4"
         >
+        
           <button
             onClick={() => navigate("/project")}
-            className="flex items-center gap-2 px-8 py-3 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-xl transition-all shadow-lg shadow-violet-500/25"
+            className="flex items-center gap-2 px-6 py-3.5 bg-violet-600 hover:bg-violet-700 text-white font-bold rounded-xl transition-all shadow-lg shadow-violet-500/25 active:scale-95 cursor-pointer"
           >
             {t("view_project")} <ArrowRight size={18} />
           </button>
-          <div className="flex items-center gap-2">
-            <a
+
+          <motion.a
+            href={cvUrl}
+            download="NguyenVanTu_CV.pdf"
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex items-center gap-2 px-6 py-3.5 bg-white dark:bg-slate-900 text-violet-600 dark:text-violet-400 font-bold rounded-xl border-2 border-violet-600/20 hover:border-violet-600 transition-all shadow-sm cursor-pointer"
+          >
+            <Download size={18} />
+            <span>{t("cv.button", "Tải CV")}</span>
+          </motion.a>
+
+      
+          <div className="flex items-center gap-1 p-1 bg-slate-100 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700">
+            <motion.a
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "rgba(124, 58, 237, 0.1)",
+              }}
               href="#"
-              className="p-3 text-slate-600 dark:text-slate-400 hover:text-violet-600 transition-colors"
+              className="p-2.5 text-slate-600 dark:text-slate-400 hover:text-violet-600 transition-colors rounded-lg"
+              title="GitHub"
             >
-              <GitBranch size={22} />
-            </a>
-            <a
+              <GitBranch size={20} />
+            </motion.a>
+
+            <div className="w-[1px] h-6 bg-slate-200 dark:bg-slate-700 mx-1"></div>
+
+            <motion.a
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "rgba(124, 58, 237, 0.1)",
+              }}
               href="#"
-              className="p-3 text-slate-600 dark:text-slate-400 hover:text-violet-600 transition-colors"
+              className="p-2.5 text-slate-600 dark:text-slate-400 hover:text-violet-600 transition-colors rounded-lg"
+              title="Contact"
             >
-              <MessageCircleCheck size={22} />
-            </a>
+              <MessageCircleCheck size={20} />
+            </motion.a>
           </div>
         </motion.div>
       </motion.div>
