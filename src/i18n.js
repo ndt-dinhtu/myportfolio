@@ -20,6 +20,25 @@ const resources = {
         about: "About",
         contact: "Contact",
       },
+      skills: {
+        title: "Soft Skills",
+        time_mgmt: "Time Management",
+        time_mgmt_desc: "Optimizing workflow for maximum productivity.",
+        hard_working: "Diligence & Responsibility",
+        hard_working_desc: "Always dedicated and meeting all deadlines.",
+        eager_learn: "Eager to Learn",
+        eager_learn_desc:
+          "Constantly updating new technologies and coding mindset.",
+        teamwork: "Teamwork",
+        teamwork_desc:
+          "Communicating effectively and supporting teammates in every project.",
+        problem_solving: "Problem Solving",
+        problem_solving_desc:
+          "Analyzing and finding optimal solutions for difficult problems.",
+        reliability: "Reliability",
+        reliability_desc:
+          "Always maintaining commitments to quality and product security.",
+      },
     },
   },
   vi: {
@@ -38,6 +57,26 @@ const resources = {
         project: "Dự án",
         about: "Giới thiệu",
         contact: "Liên hệ",
+      },
+      skills: {
+        title: "Kĩ Năng Mềm",
+        time_mgmt: "Quản lý thời gian",
+        time_mgmt_desc:
+          "Tối ưu hóa quy trình làm việc để đạt hiệu suất cao nhất.",
+        hard_working: "Cần cù & Trách nhiệm",
+        hard_working_desc:
+          "Luôn tận tâm và hoàn thành công việc đúng thời hạn đề ra.",
+        eager_learn: "Ham học hỏi",
+        eager_learn_desc:
+          "Liên tục cập nhật các công nghệ mới và cải thiện tư duy lập trình.",
+        teamwork: "Làm việc nhóm",
+        teamwork_desc: "Giao tiếp hiệu quả và hỗ trợ đồng đội trong mọi dự án.",
+        problem_solving: "Giải quyết vấn đề",
+        problem_solving_desc:
+          "Phân tích và tìm ra giải pháp tối ưu cho các bài toán khó.",
+        reliability: "Sự tin cậy",
+        reliability_desc:
+          "Luôn giữ vững cam kết về chất lượng và bảo mật sản phẩm.",
       },
     },
   },
