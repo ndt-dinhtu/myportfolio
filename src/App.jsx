@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import Project from "./components/Project";
+import Home from "./components/Home/Home";
+import Project from "./components/Project/Project";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
 import NotFound from "./components/NotFound";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 const App = () => {
   return (
     <Router>
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Footer/>
       </div>
     </Router>
   );

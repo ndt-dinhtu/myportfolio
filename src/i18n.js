@@ -49,6 +49,10 @@ const resources = {
         form_msg: "Message",
         send: "Send Message",
       },
+      footer: {
+        description: " Built with ❤️ and MERN Stack.",
+        back: " Back to top",
+      },
     },
   },
   vi: {
@@ -97,6 +101,10 @@ const resources = {
         form_name: "Họ tên",
         form_msg: "Lời nhắn",
         send: "Gửi tin nhắn",
+      },
+       footer: {
+        description: " Xây dựng bằng ❤️ và MERN Stack.",
+        back: " Cuộn lên trên",
       },
     },
   },
