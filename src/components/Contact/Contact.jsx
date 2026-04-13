@@ -1,33 +1,67 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FaFacebook } from "react-icons/fa";
 import { GiThunderBlade } from "react-icons/gi";
 import { LiaLinkedin } from "react-icons/lia";
+import emailjs from "@emailjs/browser";
+import ContactItem from "./ContactItem";
+import ContactForm from "./ContactForm";
 
 const Contact = () => {
   const { t } = useTranslation();
+  const [loading, setLoading] = useState(false);
+  const [isSent, setIsSent] = useState(false);
+  const formRef = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    emailjs
+      .sendForm(
+        "service_rjz4lu9",
+        "template_303r8n7",
+        formRef.current,
+        "x5tkSbx5x80geIogS",
+      )
+      .then(
+        () => {
+          setLoading(false);
+          setIsSent(true);
+          formRef.current.reset();
+          setTimeout(() => setIsSent(false), 5000);
+        },
+        () => {
+          setLoading(false);
+          alert("Có lỗi xảy ra, vui lòng thử lại sau!");
+        },
+      );
+  };
 
   const contactDetails = [
     {
       icon: <Mail className="text-blue-500" />,
       label: "Email",
-      value: "tu.dev@gmail.com",
-      link: "mailto:tu.dev@gmail.com",
+      value: "ndt.290303060703@gmail.com",
+      link: "mailto:ndt.290303060703@gmail.com",
     },
     {
       icon: <Phone className="text-green-500" />,
       label: t("contact.phone", "Điện thoại"),
-      value: "+84 987 xxx xxx",
-      link: "tel:+84987xxxxxx",
+      value: "+84 376330060",
+      link: "tel:+84376330060",
     },
     {
       icon: <MapPin className="text-red-500" />,
       label: t("contact.address", "Địa chỉ"),
-      value: "Hà Nội, Việt Nam",
-      link: "#",
+      value: "HCM, Việt Nam",
+      link: "https://maps.google.com",
     },
   ];
+
+  const socialLinks = [<GiThunderBlade />, <LiaLinkedin />, <FaFacebook />];
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-20">
@@ -39,7 +73,8 @@ const Contact = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        {/* CỘT TRÁI: THÔNG TIN LIÊN HỆ */}
+        
+        {/* CỘT TRÁI: THÔNG TIN */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -50,41 +85,21 @@ const Contact = () => {
             {t("contact.subtitle", "Bạn có dự án trong đầu?")}
           </h3>
           <p className="text-slate-600 dark:text-slate-400 mb-8 text-lg">
-            {t(
-              "contact.desc",
-              "Tôi luôn sẵn sàng thảo luận về các dự án mới, ý tưởng sáng tạo hoặc các cơ hội hợp tác.",
-            )}
+            {t("contact.desc", "Tôi luôn sẵn sàng thảo luận...")}
           </p>
 
           <div className="space-y-4">
             {contactDetails.map((item, index) => (
-              <a
-                key={index}
-                href={item.link}
-                className="flex items-center gap-4 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-violet-500 transition-all group shadow-sm hover:shadow-md"
-              >
-                <div className="w-12 h-12 rounded-xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  {item.icon}
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                    {item.label}
-                  </p>
-                  <p className="text-base font-semibold text-slate-900 dark:text-slate-100">
-                    {item.value}
-                  </p>
-                </div>
-              </a>
+              <ContactItem key={index} item={item} />
             ))}
           </div>
 
-          {/* SOCIAL LINKS */}
           <div className="pt-8">
             <p className="text-sm font-bold text-slate-500 mb-4 uppercase tracking-widest italic">
               Follow me
             </p>
             <div className="flex gap-4">
-              {[<GiThunderBlade />, <LiaLinkedin />, <FaFacebook />].map((icon, i) => (
+              {socialLinks.map((icon, i) => (
                 <motion.a
                   key={i}
                   whileHover={{ y: -5 }}
@@ -97,56 +112,19 @@ const Contact = () => {
           </div>
         </motion.div>
 
-        {/* CỘT PHẢI: CONTACT FORM */}
+        {/* CỘT PHẢI: FORM */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           className="lg:col-span-7"
         >
-          <form className="p-8 md:p-10 rounded-3xl bg-linear-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 border border-slate-100 dark:border-slate-800 shadow-xl space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">
-                  {t("contact.form_name", "Họ tên")}
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your name"
-                  className="w-full px-5 py-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all dark:text-white"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  placeholder="example@gmail.com"
-                  className="w-full px-5 py-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all dark:text-white"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">
-                {t("contact.form_msg", "Lời nhắn")}
-              </label>
-              <textarea
-                rows="5"
-                placeholder="How can I help you?"
-                className="w-full px-5 py-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all dark:text-white"
-              ></textarea>
-            </div>
-
-            <button className="w-full md:w-fit px-10 py-4 bg-violet-600 hover:bg-violet-700 text-white font-bold rounded-xl shadow-lg shadow-violet-500/30 transition-all flex items-center justify-center gap-3 group active:scale-95 cursor-pointer">
-              <span>{t("contact.send", "Gửi tin nhắn")}</span>
-              <Send
-                size={18}
-                className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
-              />
-            </button>
-          </form>
+          <ContactForm
+            formRef={formRef}
+            sendEmail={sendEmail}
+            loading={loading}
+            isSent={isSent}
+          />
         </motion.div>
       </div>
     </section>
