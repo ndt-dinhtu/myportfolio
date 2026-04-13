@@ -4,6 +4,7 @@ import Experience from "./Experience";
 import SoftSkills from "../Home/SoftSkills";
 import TechnicalSkills from "./TechnicalSkills";
 import DownloadCV from "../DownloadCV";
+import Testimonials from "./Testimonials";
 const About = () => {
   return (
     <div className="pb-20">
@@ -12,6 +13,7 @@ const About = () => {
       <Experience />
       <TechnicalSkills />
       <SoftSkills />
+      <Testimonials />
     </div>
   );
 };

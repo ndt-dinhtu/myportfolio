@@ -131,21 +131,19 @@ const TechnicalSkills = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-400 font-bold text-sm"
-        >
-          <Sparkles size={16} />
-          <span>My Expertise</span>
-        </motion.div>
+        ></motion.div>
         <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white leading-tight">
-          Mastering the <span className="text-violet-600">Digital Realm</span>
+          {t("about.mastering")}{" "}
+          <span className="text-violet-600">{t("about.digital")} </span>
         </h2>
         <p className="max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-          From pixel-perfect interfaces to robust backend architectures, I craft
-          end-to-end digital solutions with modern tech.
+          {t(
+            "skills.desc",
+            "Tôi thành thạo cả frontend và backend, sử dụng các công cụ hiện đại để xây dựng giải pháp toàn diện. Dưới đây là bộ kỹ năng kỹ thuật của tôi, được tổ chức thành ba lĩnh vực chính:",
+          )}
         </p>
       </div>
 
-      {/* Tabs Header - Cấu trúc Bento */}
-      {/* Tabs Header - Cấu trúc Bento nhỏ gọn hơn */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 max-w-4xl mx-auto">
         {Object.keys(skillData).map((tab) => (
           <motion.button
@@ -175,7 +173,6 @@ const TechnicalSkills = () => {
                     : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 group-hover:text-violet-600"
                 }`}
               >
-                {/* Resize icon của lucide trong data nếu cần, ở đây ta thu nhỏ div bao ngoài */}
                 <div className="scale-75">{skillData[tab].icon}</div>
               </div>
 
@@ -189,7 +186,6 @@ const TechnicalSkills = () => {
                   }`}
                 >
                   {skillData[tab].subtitle.split(" & ")[0]}{" "}
-                  {/* Rút ngắn subtitle cho gọn */}
                 </p>
               </div>
             </div>
@@ -207,7 +203,6 @@ const TechnicalSkills = () => {
           exit="exit"
           className={`relative p-8 md:p-12 rounded-3xl border border-slate-100 dark:border-slate-800 ${skillData[activeTab].bgLight}`}
         >
-          {/* Vòng tròn trang trí nền */}
           <div
             className={`absolute top-0 right-0 w-80 h-80 rounded-full blur-3xl opacity-10 bg-gradient-to-br ${skillData[activeTab].color}`}
           />

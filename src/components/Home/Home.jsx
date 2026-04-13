@@ -3,6 +3,7 @@ import Stats from "./Stats";
 import Hero from "./Hero";
 import SoftSkills from "./SoftSkills";
 import DownloadCV from "../DownloadCV";
+import Contact from "./Contact";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Stats />
       <TechStack />
       <SoftSkills />
+      <Contact/>
     </div>
   );
 };
